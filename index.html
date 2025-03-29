@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>INA : Internet Network Audit</title>
+		<link rel="stylesheet" href="https://openlayers.org/en/v4.6.5/css/ol.css" type="text/css">
+		<!-- The line below is only needed for old environments like Internet Explorer and Android 4.x -->
+		<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
+		<script src="https://openlayers.org/en/v4.6.5/build/ol.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" type="text/css">
+		<script src="https://cdn.rawgit.com/bjornharrtell/jsts/gh-pages/1.4.0/jsts.min.js"></script>
+		<script src="config/config.js"></script>
+		<script src="config/mapConfig.js"></script>
+	</head>
+	<body onload="loadBasicTools();">
+		<div id="map" class="map"></div>
+		<div id="siteLogo"><img src="./images/logo/GENESYS.png" alt="" srcset=""><img id="siteImg" src="./images/logo/iaap.png" alt="" srcset=""></div>
+		<div class="widget-container">
+			<div id="widget-container" style="direction: inline-block;">
+				
+			</div>
+			<button class="toolBtn" onclick="expandCollapse();" title="" style="width: 45px; height: 45px; cursor: pointer; font-weight: bold; font-size: 20px; color: black; background: white;">
+				<i class="bi bi-x-lg" id="expandCloseBtn" toolSts="open"></i>
+			</button>
+			&nbsp;
+			<button class="toolBtn" onclick="menuToggle();"  title="Menu" style="width: 45px; height: 45px; cursor: pointer; font-weight: bold; font-size: 28px; color: black; background: white;">
+				<i class="bi bi-list" ></i>
+			</button>
+		</div>
+		<div id="menu-list">
+			<div class="sub-menu" onclick="gotoPage('usermanagement.html')"><i class="bi bi-person-lines-fill"></i> &nbsp; User Management</div>
+			<div class="sub-menu"><i class="bi bi-key-fill"></i> &nbsp; Change Password</div>
+			<div class="sub-menu"><i class="bi bi-box-arrow-left"></i> &nbsp; Logout</div>
+		</div>
+		<div id="scaleLineController">
+			<a href="void:javascript(0);" id="changeScaleUnit">Change Scale Unit</a>
+			<div>
+				<select id="units">
+					<option value="degrees">degrees</option>
+					<option value="imperial">imperial inch</option>
+					<option value="us">us inch</option>
+					<option value="nautical">nautical mile</option>
+					<option value="metric" selected>metric</option>
+				</select>
+				<a href="void:javascript(0);" id="closeScaleUnit">Close Scale Unit</a>
+			</div>
+		</div>
+		
+
+
+		<!--TOC Popup-->
+		<div id="dragpopuptoc" class="dragpopup">
+			<div id="dragpopuptocHeader" class="dragpopup-header">
+				<h3><i class="bi bi-stack"></i>&nbsp;Layers</h3>
+				<span class="close" onclick="closePopup('dragpopuptoc');">&times;</span>
+			</div>
+			<div class="dragpopup-content">
+				<ul id="layer-list" style="margin-left: -80px;"></ul>
+			</div>
+		</div>
+
+		<!--Identify Popup-->
+		<div id="dragpopupIdentify" class="dragpopup">
+			<div id="dragpopupIdentifyHeader" class="dragpopup-header">
+				<h3><i class="bi bi-info"></i>&nbsp;Identify</h3>
+				<span class="close" onclick="closePopup('dragpopupIdentify');">&times;</span>
+			</div>
+			<div class="dragpopup-content dragpopupIdentify">
+				<select name="identifyLayers" id="identifyLayers"></select>
+				<table id="identifyTable"></table>
+			</div>
+		</div>
+
+		<!--Measuremnet Popup-->
+		<div id="dragpopup" class="dragpopup">
+			<div id="dragpopupHeader" class="dragpopup-header">
+				<h3><i class="bi bi-rulers"></i>&nbsp;Measurement</h3>
+				<span class="close" onclick="closePopup('dragpopup');closeMeasurement()">&times;</span>
+			</div>
+			<div class="dragpopup-content">
+				<form class="form-inline" >
+					<div>
+						<label>Measurement type &nbsp;</label>
+					</div>
+					<select id="type">
+						<option value="length">Length (LineString)</option>
+						<option value="area">Area (Polygon)</option>
+					</select>
+				</form>
+			</div>
+		</div>
+
+		<!--Buffer-->
+		<div id="dragpopupBuffer" class="dragpopup">
+			<div id="dragpopupBufferHeader" class="dragpopup-header">
+				<h3><i class="bi bi-geo-fill"></i>&nbsp;Buffer</h3>
+				<span class="close" onclick="closePopup('dragpopupBuffer');">&times;</span>
+			</div>
+			<div class="dragpopup-content dragpopupBuffer">
+				<div>
+					<select name="" id="bufferLayer">
+						<option value="">Select Layer</option>
+					</select>
+				</div>
+				<!-- <div>
+					<select name="" id="bufferField">
+						<option value="">Select Fields</option>
+					</select>
+				</div> -->
+				<div>
+					<select name="" id="bufferGeom">
+						<option value="">Select Geometry</option>
+						<option value="Point">Point</option>
+							<option value="LineString">LineString</option>
+							<option value="Polygon">Polygon</option>
+					</select>
+				</div>
+				<div>
+					<input type="text" name="" id="geomRadius" placeholder="Eneter radius">
+				</div>
+				<div>
+					<button type="button" onclick="createBuffer();">Submit</button>
+					<button type="button">Clear</button>
+				</div>
+			</div>
+		</div>
+
+
+		<!--Measuremnet Popup-->
+		<div id="dragpopupSearchAttr" class="dragpopup">
+			<div id="dragpopupSearchAttrHeader" class="dragpopup-header">
+				<h3><i class="bi bi-search"></i>&nbsp;Search By Attributes</h3>
+				<span class="close" onclick="closePopup('dragpopupSearchAttr');">&times;</span>
+			</div>
+			<div class="dragpopup-content">
+				<div class="search-panel">
+					<label for="layerSelect">Select Layer:</label>
+					<select id="layerSelectSearchAttr" onchange="getSearchAttrLayerField();">
+						<option value="topp:states">US States</option>
+					</select>
+
+					<label for="fieldSelectSearchAttr">Select Field:</label>
+					<select id="fieldSelectSearchAttr">
+						<option value="STATE_NAME">STATE_NAME</option>
+						<option value="PERSONS">Population (PERSONS)</option>
+					</select>
+
+					<label for="operatorSelect">Operator:</label>
+					<select id="operatorSelect">
+						<option value="=">=</option>
+						<option value="!=">!=</option>
+						<option value=">">&gt;</option>
+						<option value="<">&lt;</option>
+						<option value=">=">&gt;=</option>
+						<option value="<=">&lt;=</option>
+						<option value="LIKE">LIKE</option>
+					</select>
+
+					<label for="valueInput">Value:</label>
+					<input type="text" id="searchValueInput" placeholder="Enter value">
+
+					<button type="button" id="searchAttrButton">Search</button>
+					<button type="button" id="resetSearchButton">Reset</button>
+				</div>
+			</div>
+		</div>
+
+		<!--External JS--> 
+		<script src="js/map.js"></script>
+		<script src="js/main.js"></script>
+		<script src="js/mapTools.js"></script>
+		<script src="js/index.js"></script>
+		<script src="js/measurement.js"></script>
+		<script src="js/identify.js"></script>
+		<script src="js/buffer.js"></script>
+		<script src="js/searchByAttribute.js"></script>
+	</body>
+</html>

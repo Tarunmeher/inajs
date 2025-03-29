@@ -1,0 +1,240 @@
+*{
+	margin: 0 auto;
+	overflow-y: hidden;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+body{
+	height: 100%;
+}
+#map{
+  height: 100vh;
+}
+#siteLogo{
+	position: absolute;
+	top: 0;
+  background-image: linear-gradient(to right, white, white,
+  rgba(255, 255, 255, 0.651), 
+  rgba(255, 255, 255, 0.355), 
+  rgba(255, 255, 255, 0.108),rgb(170 211 223));
+  padding: 5px;
+}
+#siteLogo img{
+  height:40px;
+}
+.widget-container {
+	position: absolute;
+	top: 1px;
+	right: 1px;
+	padding: 5px;
+	border-radius: 5px;
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  display: flex;
+}
+.toolBtn:hover{
+	background-color: rgba(0, 0, 0, 0.3);
+}
+#widget-container{
+  margin-top: 3px;
+}
+#menu-list{
+  position: absolute;
+	top: 57px;
+	right: 1px;
+	padding: 5px;
+  background-color: white;
+  width:200px;
+  display: none;
+}
+.sub-menu{
+  padding: 10px;
+  font-size:medium;
+}
+.sub-menu:hover{
+  background-color: #0368a8;
+  cursor: pointer;
+  color: white;
+}
+
+
+/*Measurement Style*/
+.tooltip {
+	position: relative;
+	background: rgba(0, 0, 0, 0.5);
+	border-radius: 4px;
+	color: white;
+	padding: 4px 8px;
+	opacity: 0.7;
+	white-space: nowrap;
+	}
+	.tooltip-measure {
+		opacity: 1;
+		font-weight: bold;
+	}
+	.tooltip-static {
+		background-color: #ffcc33;
+		color: black;
+		border: 1px solid white;
+	}
+	.tooltip-measure:before,
+	.tooltip-static:before {
+		border-top: 6px solid rgba(0, 0, 0, 0.5);
+		border-right: 6px solid transparent;
+		border-left: 6px solid transparent;
+		content: "";
+		position: absolute;
+		bottom: -6px;
+		margin-left: -7px;
+		left: 50%;
+	}
+	.tooltip-static:before {
+		border-top-color: #ffcc33;
+	} 
+
+
+
+
+	.dragpopup {
+		width: 300px;
+		background: white;
+		border: 1px solid #ccc;
+		position: absolute;
+		top: 100px;
+		right: 100px;
+		box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+		display: none;
+}
+
+.dragpopup-header {
+	background: #0368a8;
+	color: white;
+	padding: 10px;
+	cursor: move;
+}
+.dragpopup-header h3{
+	display: inline-block;
+}
+
+.close {
+	cursor: pointer;
+	font-size: 20px;
+	float: right;
+}
+
+.dragpopup-content {
+	padding: 15px;
+	max-width: 300px;
+}
+#dragpopupIdentify{
+	height:400px;
+	overflow-y: auto;
+}
+
+#dragpopupIdentify #identifyTable{
+	border-collapse: collapse;
+}
+
+/*Search By attribute*/
+.search-panel {
+	padding: 10px;
+	background: #f8f9fa;
+	border: 1px solid #ddd;
+	margin-bottom: 10px;
+}
+#results {
+	margin-top: 10px;
+	border-collapse: collapse;
+	width: 100%;
+}
+#results, #results th, #results td {
+	border: 1px solid #ddd;
+}
+#results th, #results td {
+	padding: 8px;
+	text-align: left;
+}
+.ol-zoom{
+	display: none !important;
+}
+#scaleLineController{
+  position: absolute;
+  bottom: 10px;
+  left:160px;
+}
+#scaleLineController a{
+  font-size: small;
+}
+#units{
+  display: none;
+}
+
+/* Toaster Container */
+.toast-container {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	z-index: 3;
+	overflow: hidden;
+}
+
+/* Toast Notification */
+.toast {
+	align-items: center;
+	padding: 15px;
+	margin-bottom: 10px;
+	width: 250px;
+	/* background: #333; */
+	color: #fff;
+	font-size: 16px;
+	border-radius: 5px;
+	opacity: 0;
+	transform: translateX(100%);
+	transition: all 0.5s ease-in-out;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+	cursor: pointer;
+	overflow-x: hidden;
+	scrollbar-width: 0px;
+}
+
+/* Success Style */
+.toast.success {
+	background: #43e168c9;
+}
+
+/* Error Style */
+.toast.error {
+	background: #dc3546bb;
+}
+
+/* Show Toast */
+.toast.show {
+	opacity: 1;
+	transform: translateX(0);
+}
+
+
+
+.loader {
+	border: 10px solid #f3f3f3; /* Light grey */
+	border-top: 10px solid #0368a8; /* Blue */
+	border-radius: 50%;
+	width: 100px;
+	height: 100px;
+	animation: spin 2s linear infinite;
+	margin: auto;
+	margin-top:200px;
+}
+
+@keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+
+.loaderContainer {
+	width: 100%;
+	position: absolute;
+	z-index: 5;
+	background-color: rgba(255, 255, 255, 0.321);
+	height: 100vh;
+	top:0;
+	display: none;
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>User Management</title>
+	<link rel="stylesheet" href="css/usermanagement.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" type="text/css">
+		<script src="./config/mapConfig.js"></script>
+</head>
+<body>
+	<div id="siteLogo"><img src="./images/logo/GENESYS.png" alt="" srcset=""><img id="siteImg" src="./images/logo/iaap.png" alt="" srcset=""></div>
+
+	<div class="main-container">
+		<!-- Sidebar Navigation -->
+			<div class="sidebar">
+				<button class="tab active" onclick="openTab(event, 'addUser')"><i class="bi bi-person-plus-fill"></i>&nbsp;Add User</button>
+				<button class="tab" onclick="openTab(event, 'viewAllocation');fetchUsers();"><i class="bi bi-person-lines-fill"></i>&nbsp;Assign GP/s</button>
+				<button class="tab" onclick="openTab(event, 'viewAllocatedUsers')"><i class="bi bi-card-checklist"></i>&nbsp;View Allocated Users</button>
+			</div>
+
+			<!-- Main Content -->
+			<div class="content">
+				<div id="addUser" class="tab-content active">
+					<h2 class="contentHeading">Add User</h2>
+					<div class="adduser-container">
+			<input type="text" class="adduser-input-box" placeholder="Enter Username">
+			<input type="text" class="adduser-input-box" placeholder="Enter Password">
+			<input type="text" class="adduser-input-box" placeholder="Enter Role">
+			<input type="text" class="adduser-input-box" placeholder="Enter First Name">
+			<input type="text" class="adduser-input-box" placeholder="Enter Last Name">
+			<input type="text" class="adduser-input-box" placeholder="Enter Email">
+			<input type="text" class="adduser-input-box" placeholder="Enter Mobile">
+			</div>
+			<br>
+			<div style="text-align: right;">
+				<button type="button" id="saveUser">Create User</button>
+				<button type="button" id="resetUser">Reset</button>
+			</div>
+				</div>
+
+				<div id="viewAllocation" class="tab-content">
+					<h2 class="contentHeading">Assign GP/s</h2>
+					<h3>User List</h3>
+			<div style="padding:5px 0px;"><input type="text" class="userSearchText" name="" id="" placeholder="Search.."></div>
+			<table id="viewAllocationTable">
+				<thead>
+					<tr>
+						<th>#SL</th>
+						<th>UserID</th>
+						<th>Username</th>
+						<th>Assign Status</th>
+						<th>Role</th>
+						<th>View Assigned GPs</th>
+						<th>Assign New GPs</th>
+						<th>Edit</th>
+						<th>Delete</th>
+					</tr>
+				</thead>
+				<tbody id="userlist">
+					<tr>
+						<td>1</td>
+						<td>001</td>
+						<td>tarun</td>
+						<td>Assigned</td>
+						<td>Surveyor</td>
+						<td><i onclick="viewAssignedGP(1)" class="bi bi-eye-fill"></i></td>
+						<td><i onclick="assignedNewGP(1)" class="bi bi-pin-map-fill"></i></td>
+						<td><i onclick="editUser(1)" class="bi bi-pencil-fill"></i></td>
+						<td><i onclick="deleteUser(1)" class="bi bi-trash-fill"></i></td>
+					</tr>
+				</tbody>
+			</table>
+			<br>
+			<div id="userDetailPagination" class="pagination" style="display: none;">
+				<span id="prevBtn" onclick="prevPage()" disabled><i class="bi bi-skip-backward-fill"></i></span>
+				&nbsp;<span id="pageInfo">Page 1 of 1</span>&nbsp;
+				<span id="nextBtn" onclick="nextPage()" disabled><i class="bi bi-fast-forward-fill"></i></span>
+			</div>
+				</div>
+
+				<div id="viewAllocatedUsers" class="tab-content">
+					<h2 class="contentHeading">View Allocated Users</h2>
+
+				</div>
+				</div>
+	</div>
+
+
+	<!-- Modal Structure -->
+	<div id="myModal" class="usrmgmtmodal"> 
+		<div class="usrmgmtmodal-content">
+			<div class="usrmgmtmodal-header"> 
+				<h2 id="modalTitle">Modal Title</h2>
+				<span class="usrmgmtclose" onclick="closeModal()" cur>&times;</span>
+			</div>
+			<hr>
+			<div id="assignedgp-content">
+				assignedGPTable
+			</div>
+			<div id="assigngp-content">
+				Assigne New GP
+			</div>
+			<div id="edituser-content">
+				Edit User
+			</div>
+		</div>
+	</div>
+
+	<script src="js/main.js"></script>
+	<script src="js/userMgmt.js"></script>
+
+</body>
+</html>
