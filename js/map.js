@@ -39,7 +39,7 @@ unitsSelect.addEventListener('change', onChange);
 
 
 
-loadLayers();
+// loadLayers();
 function loadLayers(){
 	var layers = [];
 	if(mapInfo.Layers.length>0){

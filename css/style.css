@@ -140,6 +140,52 @@ body{
 	border: 1px solid #ddd;
 	margin-bottom: 10px;
 }
+.searchItem{
+	padding:5px;
+	width:90%;
+}
+
+#searchAttrButton { 
+    background: #0368a8;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+#resetSearchButton { 
+    background: #b4b4b4;
+    color: black;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+#submitBufferBtn { 
+    background: #0368a8;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+#resetBufferBtn { 
+    background: #b4b4b4;
+    color: black;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
 #results {
 	margin-top: 10px;
 	border-collapse: collapse;

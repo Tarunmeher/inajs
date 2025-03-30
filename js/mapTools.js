@@ -8,6 +8,9 @@ function gotoMapExtent(){
 	map.getView().setCenter(new ol.proj.fromLonLat(mapInfo.center));
 	map.getView().setZoom(mapInfo.zoom);
 }
+function enableMeasurement(){
+	addInteraction();
+}
 function openLayerTOC(){
 	document.getElementById('dragpopuptoc').style.display='block';
 	if(!$("#layer-list").html()){

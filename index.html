@@ -18,13 +18,13 @@
 		<div id="siteLogo"><img src="./images/logo/GENESYS.png" alt="" srcset=""><img id="siteImg" src="./images/logo/iaap.png" alt="" srcset=""></div>
 		<div class="widget-container">
 			<div id="widget-container" style="direction: inline-block;">
-				
+
 			</div>
 			<button class="toolBtn" onclick="expandCollapse();" title="" style="width: 45px; height: 45px; cursor: pointer; font-weight: bold; font-size: 20px; color: black; background: white;">
 				<i class="bi bi-x-lg" id="expandCloseBtn" toolSts="open"></i>
 			</button>
 			&nbsp;
-			<button class="toolBtn" onclick="menuToggle();"  title="Menu" style="width: 45px; height: 45px; cursor: pointer; font-weight: bold; font-size: 28px; color: black; background: white;">
+			<button class="toolBtn" onclick="menuToggle();" title="Menu" style="width: 45px; height: 45px; cursor: pointer; font-weight: bold; font-size: 28px; color: black; background: white;">
 				<i class="bi bi-list" ></i>
 			</button>
 		</div>
@@ -46,7 +46,7 @@
 				<a href="void:javascript(0);" id="closeScaleUnit">Close Scale Unit</a>
 			</div>
 		</div>
-		
+
 
 
 		<!--TOC Popup-->
@@ -98,31 +98,43 @@
 				<span class="close" onclick="closePopup('dragpopupBuffer');">&times;</span>
 			</div>
 			<div class="dragpopup-content dragpopupBuffer">
-				<div>
-					<select name="" id="bufferLayer">
-						<option value="">Select Layer</option>
-					</select>
-				</div>
-				<!-- <div>
-					<select name="" id="bufferField">
-						<option value="">Select Fields</option>
-					</select>
-				</div> -->
-				<div>
-					<select name="" id="bufferGeom">
-						<option value="">Select Geometry</option>
-						<option value="Point">Point</option>
-							<option value="LineString">LineString</option>
-							<option value="Polygon">Polygon</option>
-					</select>
-				</div>
-				<div>
-					<input type="text" name="" id="geomRadius" placeholder="Eneter radius">
-				</div>
-				<div>
-					<button type="button" onclick="createBuffer();">Submit</button>
-					<button type="button">Clear</button>
-				</div>
+				<div class="search-panel">
+					<div style="padding:5px;">
+						<div>
+							<label for="bufferLayer">Select Layer</label>
+						</div>
+						<div>
+							<select class="searchItem" name="" id="bufferLayer">
+								<option value="">Select Layer</option>
+							</select>
+						</div>
+					</div>
+					<div style="padding:5px;">
+						<div>
+							<label for="bufferGeom">Select Geometry</label>
+						</div>
+						<div>
+							<select class="searchItem" name="" id="bufferGeom">
+								<option value="">Select Geometry</option>
+								<option value="Point">Point</option>
+									<option value="LineString">LineString</option>
+									<option value="Polygon">Polygon</option>
+							</select>
+						</div>
+					</div>
+					<div style="padding:5px;">
+						<div>
+							<label for="geomRadius">Enter Radius</label>
+						</div>
+						<div>
+							<input class="searchItem" type="text" name="" id="geomRadius" placeholder="Enter radius">
+						</div>
+					</div>
+					<div style="padding:5px;text-align: right;">
+						<button type="button" id="submitBufferBtn" onclick="createBuffer();">Submit</button>
+						<button type="button" id="resetBufferBtn">Clear</button>
+					</div>
+				</div>				
 			</div>
 		</div>
 
@@ -135,33 +147,51 @@
 			</div>
 			<div class="dragpopup-content">
 				<div class="search-panel">
-					<label for="layerSelect">Select Layer:</label>
-					<select id="layerSelectSearchAttr" onchange="getSearchAttrLayerField();">
-						<option value="topp:states">US States</option>
-					</select>
+					<div style="padding:5px;">
+						<div>
+							<label for="layerSelect">Select Layer:</label>
+						</div>
+						<select class="searchItem" id="layerSelectSearchAttr" onchange="getSearchAttrLayerField();">
+							<option value="topp:states">US States</option>
+						</select>
+					</div>
 
-					<label for="fieldSelectSearchAttr">Select Field:</label>
-					<select id="fieldSelectSearchAttr">
-						<option value="STATE_NAME">STATE_NAME</option>
-						<option value="PERSONS">Population (PERSONS)</option>
-					</select>
+					<div style="padding:5px;">
+						<div>
+							<label for="fieldSelectSearchAttr">Select Field:</label>
+						</div>
+						<select class="searchItem" id="fieldSelectSearchAttr">
+							<option value="STATE_NAME">STATE_NAME</option>
+							<option value="PERSONS">Population (PERSONS)</option>
+						</select>
+					</div>
 
-					<label for="operatorSelect">Operator:</label>
-					<select id="operatorSelect">
-						<option value="=">=</option>
-						<option value="!=">!=</option>
-						<option value=">">&gt;</option>
-						<option value="<">&lt;</option>
-						<option value=">=">&gt;=</option>
-						<option value="<=">&lt;=</option>
-						<option value="LIKE">LIKE</option>
-					</select>
+					<div style="padding:5px;">
+						<div>
+							<label for="operatorSelect">Condition:</label>
+						</div>
+						<select class="searchItem" id="operatorSelect">
+							<option value="=">Equal To</option>
+							<option value="!=">Not Equal To</option>
+							<option value=">">Greater Than</option>
+							<option value="<">Less Than</option>
+							<option value=">=">Greater Than Or Equal</option>
+							<option value="<=">Less Than Or Equal</option>
+							<option value="LIKE">LIKE</option>
+						</select>
+					</div>
 
-					<label for="valueInput">Value:</label>
-					<input type="text" id="searchValueInput" placeholder="Enter value">
+					<div style="padding:5px;">
+						<div>
+							<label for="valueInput">Value:</label>
+						</div>
+						<input class="searchItem" type="text" id="searchValueInput" placeholder="Enter value">
+					</div>
 
-					<button type="button" id="searchAttrButton">Search</button>
-					<button type="button" id="resetSearchButton">Reset</button>
+					<div style="text-align: right;padding:5px;">
+						<button type="button" id="searchAttrButton">Search</button>
+						<button type="button" id="resetSearchButton">Reset</button>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -61,7 +61,7 @@ const appConfig = {
             featureName:"measurement",
             title:"Measurement",
             enable:true,
-            functionName:'addInteraction',
+            functionName:'enableMeasurement',
             icon:'<i class="bi bi-rulers"></i>'
         },
         {
