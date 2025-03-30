@@ -175,3 +175,23 @@ function deleteUser(uid){
 }
 
 
+function addGP(event){
+	let gpName = $(event).parent().text();
+	$(event).parent().remove();
+	$("#selectedgplist-list").append(`<div class="list">${gpName}<i class="bi bi-dash-lg" onclick="removeGP(this);"></i></div>`);
+}
+function removeGP(event){
+	let gpName = $(event).parent().text();
+	$(event).parent().remove();
+	$("#gplist-list").append(`<div class="list">${gpName}<i class="bi bi-plus-lg" onclick="addGP(this);"></i></div>`);
+}
+
+$("#openChangePassword").click(function(){
+	$("#changepassword-container").show();
+	$("#changepassword-container").animate({"width":"300px"}, "fast");	
+});
+function closeChangePassword(){
+	$("#changepassword-container").animate({"width":"0px"}, "fast");
+	$("#changepassword-container").hide();
+}
+

@@ -10,7 +10,16 @@
 		<script src="./config/mapConfig.js"></script>
 </head>
 <body>
-	<div id="siteLogo"><img src="./images/logo/GENESYS.png" alt="" srcset=""><img id="siteImg" src="./images/logo/iaap.png" alt="" srcset=""></div>
+	<div id="siteLogo" style="display: flex;justify-content: space-between;">
+		<div>
+			<img src="./images/logo/GENESYS.png" alt="" srcset=""><img id="siteImg" src="./images/logo/iaap.png" alt="" srcset="">
+		</div>
+		<div class="btns">
+			<a href="index.html"><button><i class="bi bi-person-lines-fill"></i> Goto Map</button></a>
+			<button id="openChangePassword"><i class="bi bi-key-fill"></i> Change Password</button>
+			<a href="login.html"><button><i class="bi bi-box-arrow-left"></i> Logout</button></a>
+		</div>
+	</div>
 
 	<div class="main-container">
 		<!-- Sidebar Navigation -->
@@ -25,66 +34,101 @@
 				<div id="addUser" class="tab-content active">
 					<h2 class="contentHeading">Add User</h2>
 					<div class="adduser-container">
-			<input type="text" class="adduser-input-box" placeholder="Enter Username">
-			<input type="text" class="adduser-input-box" placeholder="Enter Password">
-			<input type="text" class="adduser-input-box" placeholder="Enter Role">
-			<input type="text" class="adduser-input-box" placeholder="Enter First Name">
-			<input type="text" class="adduser-input-box" placeholder="Enter Last Name">
-			<input type="text" class="adduser-input-box" placeholder="Enter Email">
-			<input type="text" class="adduser-input-box" placeholder="Enter Mobile">
-			</div>
-			<br>
-			<div style="text-align: right;">
-				<button type="button" id="saveUser">Create User</button>
-				<button type="button" id="resetUser">Reset</button>
-			</div>
-				</div>
-
-				<div id="viewAllocation" class="tab-content">
-					<h2 class="contentHeading">Assign GP/s</h2>
-					<h3>User List</h3>
-			<div style="padding:5px 0px;"><input type="text" class="userSearchText" name="" id="" placeholder="Search.."></div>
-			<table id="viewAllocationTable">
-				<thead>
-					<tr>
-						<th>#SL</th>
-						<th>UserID</th>
-						<th>Username</th>
-						<th>Assign Status</th>
-						<th>Role</th>
-						<th>View Assigned GPs</th>
-						<th>Assign New GPs</th>
-						<th>Edit</th>
-						<th>Delete</th>
-					</tr>
-				</thead>
-				<tbody id="userlist">
-					<tr>
-						<td>1</td>
-						<td>001</td>
-						<td>tarun</td>
-						<td>Assigned</td>
-						<td>Surveyor</td>
-						<td><i onclick="viewAssignedGP(1)" class="bi bi-eye-fill"></i></td>
-						<td><i onclick="assignedNewGP(1)" class="bi bi-pin-map-fill"></i></td>
-						<td><i onclick="editUser(1)" class="bi bi-pencil-fill"></i></td>
-						<td><i onclick="deleteUser(1)" class="bi bi-trash-fill"></i></td>
-					</tr>
-				</tbody>
-			</table>
-			<br>
-			<div id="userDetailPagination" class="pagination" style="display: none;">
-				<span id="prevBtn" onclick="prevPage()" disabled><i class="bi bi-skip-backward-fill"></i></span>
-				&nbsp;<span id="pageInfo">Page 1 of 1</span>&nbsp;
-				<span id="nextBtn" onclick="nextPage()" disabled><i class="bi bi-fast-forward-fill"></i></span>
-			</div>
+						<input type="text" class="adduser-input-box" placeholder="Enter Username">
+						<input type="text" class="adduser-input-box" placeholder="Enter Password">
+						<input type="text" class="adduser-input-box" placeholder="Enter Role">
+						<input type="text" class="adduser-input-box" placeholder="Enter First Name">
+						<input type="text" class="adduser-input-box" placeholder="Enter Last Name">
+						<input type="text" class="adduser-input-box" placeholder="Enter Email">
+						<input type="text" class="adduser-input-box" placeholder="Enter Mobile">
+					</div>
+					<br>
+					<div style="text-align: right;">
+						<button type="button" id="saveUser">Create User</button>
+						<button type="button" id="resetUser">Reset</button>
+					</div>
+						</div>
+					
+						<div id="viewAllocation" class="tab-content">
+							<h2 class="contentHeading">Assign GP/s</h2>
+							<h3>User List</h3>
+					<div style="padding:5px 0px;"><input type="text" class="userSearchText" name="" id="" placeholder="Search.."></div>
+					<table id="viewAllocationTable">
+						<thead>
+							<tr>
+								<th>#SL</th>
+								<th>UserID</th>
+								<th>Username</th>
+								<th>Assign Status</th>
+								<th>Role</th>
+								<th>View Assigned GPs</th>
+								<th>Assign New GPs</th>
+								<th>Edit</th>
+								<th>Delete</th>
+							</tr>
+						</thead>
+						<tbody id="userlist">
+							<tr>
+								<td>1</td>
+								<td>001</td>
+								<td>tarun</td>
+								<td>Assigned</td>
+								<td>Surveyor</td>
+								<td><i onclick="viewAssignedGP(1)" class="bi bi-eye-fill"></i></td>
+								<td><i onclick="assignedNewGP(1)" class="bi bi-pin-map-fill"></i></td>
+								<td><i onclick="editUser(1)" class="bi bi-pencil-fill"></i></td>
+								<td><i onclick="deleteUser(1)" class="bi bi-trash-fill"></i></td>
+							</tr>
+						</tbody>
+					</table>
+					<br>
+					<div id="userDetailPagination" class="pagination" style="display: none;">
+						<span id="prevBtn" onclick="prevPage()" disabled><i class="bi bi-skip-backward-fill"></i></span>
+						&nbsp;<span id="pageInfo">Page 1 of 1</span>&nbsp;
+						<span id="nextBtn" onclick="nextPage()" disabled><i class="bi bi-fast-forward-fill"></i></span>
+					</div>
 				</div>
 
 				<div id="viewAllocatedUsers" class="tab-content">
-					<h2 class="contentHeading">View Allocated Users</h2>
-
+					<h2 class="contentHeading">View Allocated GPs</h2>
+					<h3>GP List</h3>
+					<div style="padding:5px 0px;"><input type="text" class="gpSearchText" name="" id="" placeholder="Search.."></div>
+					<table id="viewGPTable">
+						<thead>
+							<tr>
+								<th>#SL</th>
+								<th>UserID</th>
+								<th>Username</th>
+								<th>Assign Status</th>
+								<th>Role</th>
+								<th>View Assigned GPs</th>
+								<th>Assign New GPs</th>
+								<th>Edit</th>
+								<th>Delete</th>
+							</tr>
+						</thead>
+						<tbody id="gp-list">
+							<tr>
+								<td>1</td>
+								<td>001</td>
+								<td>tarun</td>
+								<td>Assigned</td>
+								<td>Surveyor</td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+						</tbody>
+					</table>
+					<br>
+					<div id="gpDetailPagination" class="pagination" style="display: none;">
+						<span id="prevBtn" onclick="prevPage()" disabled><i class="bi bi-skip-backward-fill"></i></span>
+						&nbsp;<span id="pageInfo">Page 1 of 1</span>&nbsp;
+						<span id="nextBtn" onclick="nextPage()" disabled><i class="bi bi-fast-forward-fill"></i></span>
+					</div>
 				</div>
-				</div>
+			</div>
 	</div>
 
 
@@ -97,15 +141,214 @@
 			</div>
 			<hr>
 			<div id="assignedgp-content">
-				assignedGPTable
+				<table id="assignedgp-content-table">
+					<thead>
+						<tr>
+							<th>State</th>
+							<th>District</th>
+							<th>Block</th>
+							<th>GP</th>
+							<th>GP Status</th>
+							<th>Remove</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Uttar Pradesh</td>
+							<td>Prayagraj</td>
+							<td>Aurai</td>
+							<td>Aurangabad</td>
+							<td>In Progress</td>
+							<td><i onclick="deleteAssignedGp(1)" class="bi bi-trash-fill"></i</td>
+						</tr>
+						<tr>
+							<td>Uttar Pradesh</td>
+							<td>Prayagraj</td>
+							<td>Aurai</td>
+							<td>Aurangabad</td>
+							<td>In Progress</td>
+							<td><i onclick="deleteAssignedGp(1)" class="bi bi-trash-fill"></i</td>
+						</tr>
+						<tr>
+							<td>Uttar Pradesh</td>
+							<td>Prayagraj</td>
+							<td>Aurai</td>
+							<td>Aurangabad</td>
+							<td>In Progress</td>
+							<td><i onclick="deleteAssignedGp(1)" class="bi bi-trash-fill"></i</td>
+						</tr>
+						<tr>
+							<td>Uttar Pradesh</td>
+							<td>Prayagraj</td>
+							<td>Aurai</td>
+							<td>Aurangabad</td>
+							<td>In Progress</td>
+							<td><i onclick="deleteAssignedGp(1)" class="bi bi-trash-fill"></i</td>
+						</tr>
+						<tr>
+							<td>Uttar Pradesh</td>
+							<td>Prayagraj</td>
+							<td>Aurai</td>
+							<td>Aurangabad</td>
+							<td>In Progress</td>
+							<td><i onclick="deleteAssignedGp(1)" class="bi bi-trash-fill"></i</td>
+						</tr>
+						<tr>
+							<td>Uttar Pradesh</td>
+							<td>Prayagraj</td>
+							<td>Aurai</td>
+							<td>Aurangabad</td>
+							<td>In Progress</td>
+							<td><i onclick="deleteAssignedGp(1)" class="bi bi-trash-fill"></i</td>
+						</tr>
+						<tr>
+							<td>Uttar Pradesh</td>
+							<td>Prayagraj</td>
+							<td>Aurai</td>
+							<td>Aurangabad</td>
+							<td>In Progress</td>
+							<td><i onclick="deleteAssignedGp(1)" class="bi bi-trash-fill"></i</td>
+						</tr>
+						<tr>
+							<td>Uttar Pradesh</td>
+							<td>Prayagraj</td>
+							<td>Aurai</td>
+							<td>Aurangabad</td>
+							<td>In Progress</td>
+							<td><i onclick="deleteAssignedGp(1)" class="bi bi-trash-fill"></i</td>
+						</tr>
+						<tr>
+							<td>Uttar Pradesh</td>
+							<td>Prayagraj</td>
+							<td>Aurai</td>
+							<td>Aurangabad</td>
+							<td>In Progress</td>
+							<td><i onclick="deleteAssignedGp(1)" class="bi bi-trash-fill"></i</td>
+						</tr>
+						<tr>
+							<td>Uttar Pradesh</td>
+							<td>Prayagraj</td>
+							<td>Aurai</td>
+							<td>Aurangabad</td>
+							<td>In Progress</td>
+							<td><i onclick="deleteAssignedGp(1)" class="bi bi-trash-fill"></i</td>
+						</tr>
+						<tr>
+							<td>Uttar Pradesh</td>
+							<td>Prayagraj</td>
+							<td>Aurai</td>
+							<td>Aurangabad</td>
+							<td>In Progress</td>
+							<td><i onclick="deleteAssignedGp(1)" class="bi bi-trash-fill"></i</td>
+						</tr>
+						<tr>
+							<td>Uttar Pradesh</td>
+							<td>Prayagraj</td>
+							<td>Aurai</td>
+							<td>Aurangabad</td>
+							<td>In Progress</td>
+							<td><i onclick="deleteAssignedGp(1)" class="bi bi-trash-fill"></i</td>
+						</tr>
+						<tr>
+							<td>Uttar Pradesh</td>
+							<td>Prayagraj</td>
+							<td>Aurai</td>
+							<td>Aurangabad</td>
+							<td>In Progress</td>
+							<td><i onclick="deleteAssignedGp(1)" class="bi bi-trash-fill"></i</td>
+						</tr>
+						<tr>
+							<td>Uttar Pradesh</td>
+							<td>Prayagraj</td>
+							<td>Aurai</td>
+							<td>Aurangabad</td>
+							<td>In Progress</td>
+							<td><i onclick="deleteAssignedGp(1)" class="bi bi-trash-fill"></i</td>
+						</tr>
+						<tr>
+							<td>Uttar Pradesh</td>
+							<td>Prayagraj</td>
+							<td>Aurai</td>
+							<td>Aurangabad</td>
+							<td>In Progress</td>
+							<td><i onclick="deleteAssignedGp(1)" class="bi bi-trash-fill"></i</td>
+						</tr>
+						<tr>
+							<td>Uttar Pradesh</td>
+							<td>Prayagraj</td>
+							<td>Aurai</td>
+							<td>Aurangabad</td>
+							<td>In Progress</td>
+							<td><i onclick="deleteAssignedGp(1)" class="bi bi-trash-fill"></i</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 			<div id="assigngp-content">
-				Assigne New GP
+				<div style="display: flex;justify-content: space-around; padding:20px;">
+					<div style="width:30%;">
+						<div><label for="assignState">Select State :</label></div>
+						<div>
+							<select class="searchItem" name="" id="assignState">
+								<option value="">Select State</option>
+							</select>
+						</div>
+					</div>
+					<div  style="width:30%;">
+						<div><label for="assignDist">Select District :</label></div>
+						<div>
+							<select class="searchItem" name="" id="assignDist">
+								<option value="">Select District</option>
+							</select>
+						</div>
+					</div>
+					<div  style="width:30%;">
+						<div>
+							<label for="assignBlock">Select Block :</label>
+						</div>
+						<div>
+							<select class="searchItem" name="" id="assignBlock">
+								<option value="">Select Block</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div style="display: flex;justify-content: space-around;padding:20px;">
+					<div id="gplist">
+						<div class="gplistheading">GP List</div>
+						<div id="gplist-list">
+							<div class="list" index="2">GP two<i class="bi bi-plus-lg" onclick="addGP(this);"></i></div>
+							<div class="list" index="3">GP three<i class="bi bi-plus-lg" onclick="addGP(this);"></i></div>
+							<div class="list" index="4">GP four<i class="bi bi-plus-lg" onclick="addGP(this);"></i></div>
+							<div class="list" index="5">GP five<i class="bi bi-plus-lg" onclick="addGP(this);"></i></div>
+						</div>
+					</div>
+					<div style="text-align: center;font-size: 2rem;">
+						<i class="bi bi-arrow-left-right" style="margin-top: 50px;"></i>
+					</div>
+					<div id="selectedgplist">
+						<div class="gplistheading">Selected GP List</div>
+						<div id="selectedgplist-list">
+							<div class="list" index="1">GP one<i class="bi bi-dash-lg" onclick="removeGP(this);"></i></div>
+						</div>
+					</div>
+				</div>
+				<div style="text-align: right;padding:5px;">
+					<button type="button" id="assignGPBtn">Assign</button>
+					<button type="button" id="resetAssign">Reset</button>
+				</div>
 			</div>
 			<div id="edituser-content">
 				Edit User
 			</div>
 		</div>
+	</div>
+
+	<div id="changepassword-container">
+		<div class="changepasswordHeading"><i class="bi bi-key-fill"></i> &nbsp;Change Password 
+			<span id="chnagePasswordClosebtn" onclick="closeChangePassword()" cur>&times;</span>
+		</div>
+		<div class="changepasswordContent"></div>
 	</div>
 
 	<script src="js/main.js"></script>

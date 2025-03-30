@@ -1,172 +1,327 @@
 body {
 	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 	margin: 20px;
-    margin: 0 auto;
+		margin: 0 auto;
+        /* overflow: hidden; */
 }
 #siteLogo{
-		background-image: linear-gradient(to right, white, white,
-		rgba(255, 255, 255, 0.651), 
-		rgba(255, 255, 255, 0.355), 
-		rgba(255, 255, 255, 0.108));
-		padding: 5px;
+	background-image: linear-gradient(to right, white, white,
+	rgba(255, 255, 255, 0.651), 
+	rgba(255, 255, 255, 0.355), 
+	rgba(255, 255, 255, 0.108));
+	padding: 5px;
 }
 #siteLogo img{
 	height:40px;
 }
 .main-container{
-    display: flex;
-    border-top: 1px solid #0368a8;
-    height: 100vh;
+	display: flex;
+	border-top: 1px solid #0368a8;
+	height: 100vh;
+  
 }
 /* Sidebar Navigation */
 .sidebar {
-    width: 20%;
-    background-color: whitesmoke;
-    /* padding-top: 20px; */
-    height: 100%;
-    border-top: 1px solid #0368a8;
+	width: 20%;
+	background-color: whitesmoke;
+	/* padding-top: 20px; */
+	height: 100%;
+	border-top: 1px solid #0368a8;
 }
 
 .tab {
-    padding: 15px;
-    text-align: left;
-    color: black;
-    cursor: pointer;
-    border: none;
-    background: none;
-    width: 100%;
-    font-size: 16px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+	padding: 15px;
+	text-align: left;
+	color: black;
+	cursor: pointer;
+	border: none;
+	background: none;
+	width: 100%;
+	font-size: 16px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .tab:hover, .tab.active {
-    background-color: #0368a8;
-    color:white;
+	background-color: #0368a8;
+	color:white;
 }
 
 /* Content Area */
 .content {
-    padding: 5px 20px;
-    width: 80%;
+	padding: 5px 20px;
+	width: 80%;
 }
 .contentHeading{
-    border-bottom: 1px solid #0368a8;
+	border-bottom: 1px solid #0368a8;
 }
 
 .tab-content {
-    display: none;
+	display: none;
 }
 
 .tab-content.active {
-    display: block;
+	display: block;
 }
 
 .adduser-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 10px 50px;
-    padding: 5px 20px;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+	gap: 10px 50px;
+	padding: 5px 20px;
 }
 
 .adduser-input-box {
-    width: 300px !important;
-    padding: 10px;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
+	width: 300px !important;
+	padding: 10px;
+	border: 2px solid #ccc;
+	border-radius: 5px;
+	font-size: 16px;
 }
 
 #saveUser { 
-    background: #0368a8;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    font-size: 15px;
-    cursor: pointer;
-    transition: 0.3s;
+	background: #0368a8;
+	color: white;
+	padding: 10px;
+	border: none;
+	border-radius: 5px;
+	font-size: 15px;
+	cursor: pointer;
+	transition: 0.3s;
 }
 #resetUser { 
-    background: #b4b4b4;
-    color: black;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    font-size: 15px;
-    cursor: pointer;
-    transition: 0.3s;
+	background: #b4b4b4;
+	color: black;
+	padding: 10px 15px;
+	border: none;
+	border-radius: 5px;
+	font-size: 15px;
+	cursor: pointer;
+	transition: 0.3s;
 }
+/**User List Table*/
 #viewAllocationTable{
-    border-collapse: collapse;
-    width:100%;
+	border-collapse: collapse;
+	width:100%;
 }
 #viewAllocationTable thead tr th{
-    padding:10px;
-    background-color: #0368a8;
-    color: white;
+	padding:10px;
+	background-color: #0368a8;
+	color: white;
 }
 #viewAllocationTable td,th{
-    border: 1px solid gray;
-    text-align: center;
+	border: 1px solid gray;
+	text-align: center;
 }
 #viewAllocationTable td{
-    padding: 5px;
+	padding: 5px;
 }
 #viewAllocationTable tr:nth-child(even){
-    background-color: rgba(188, 188, 188, 0.571);
+	background-color: rgba(188, 188, 188, 0.571);
 }
 #viewAllocationTable tr i:hover{
-    cursor: pointer;
-    color:#0368a8;
+	cursor: pointer;
+	color:#0368a8;
 }
 #userDetailPagination i{
-    cursor: pointer;
+	cursor: pointer;
 }
+/**User List Table*/
+
+/**Allocated GP List to Specific User*/
+#assignedgp-content{
+	height: 75%;
+	overflow: auto;
+	border-bottom: 1px solid #0368a8;
+}
+
+#assignedgp-content-table{
+	border-collapse: collapse;
+	width:100%;
+}
+#assignedgp-content-table thead tr th{
+	padding:10px;
+	background-color: #0368a8;
+	color: white;
+}
+#assignedgp-content-table td,th{
+	border: 1px solid gray;
+	text-align: center;
+}
+#assignedgp-content-table td{
+	padding: 5px;
+}
+#assignedgp-content-table tr:nth-child(even){
+	background-color: rgba(188, 188, 188, 0.571);
+}
+#assignedgp-content-table tr i:hover{
+	cursor: pointer;
+	color:#0368a8;
+}
+/**Allocated GP List to Specific User*/
+.searchItem{
+	padding:5px;
+	width:90%;
+}
+/**Assigne New GP*/
+#gplist, #selectedgplist{
+	width:40%;
+	height:250px;
+	border: 1px solid #0368a8;
+}
+.gplistheading{
+	padding:10px;
+	background-color:#0368a8;
+	color: white;
+	font-weight: bold;
+	text-align: center;
+}
+#assignGPBtn { 
+	background: #0368a8;
+	color: white;
+	padding: 10px;
+	border: none;
+	border-radius: 5px;
+	font-size: 15px;
+	cursor: pointer;
+	transition: 0.3s;
+}
+#resetAssign { 
+	background: #b4b4b4;
+	color: black;
+	padding: 10px 15px;
+	border: none;
+	border-radius: 5px;
+	font-size: 15px;
+	cursor: pointer;
+	transition: 0.3s;
+}
+.list{
+	text-align: left;
+	padding: 5px;
+	border-bottom: 1px solid #0368a8;
+}
+.list:hover{
+	background-color: #0369a87c;
+	color: white; 
+}
+.list i:hover{
+	font-weight: bold;
+}
+.list i{
+	float: right;
+	cursor: pointer;
+}
+/**Assigne New GP*/
 
 
 /**Modal**/
 /* Modal Background */
 .usrmgmtmodal {
-    display: none; /* Hidden by default */
-    position: absolute;
-    z-index: 9;
-    width: 100%;
-    height: 100%;
-    top:0;
-    background-color: rgba(0, 0, 0, 0.5);
-    justify-content: center;
+	display: none; /* Hidden by default */
+	position: absolute;
+	z-index: 9;
+	width: 100%;
+	height: 100%;
+	top:0;
+	background-color: rgba(0, 0, 0, 0.5);
+	justify-content: center;
 }
 .usrmgmtmodal-header{
-    display: flex;
-    justify-content: space-between;
+	display: flex;
+	justify-content: space-between;
 }
 
 /* Modal Content */
 .usrmgmtmodal-content {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    width: 70%;
-    height: 500px;
-    text-align: center;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-    animation: fadeIn 0.3s ease-in-out;
-    margin: auto;
-    margin-top: 50px;
-    border-top: 20px solid #0368a8;
+	background: white;
+	padding: 20px;
+	border-radius: 10px;
+	width: 70%;
+	height: 500px;
+	text-align: center;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+	animation: fadeIn 0.3s ease-in-out;
+	margin: auto;
+	margin-top: 50px;
+	border-top: 20px solid #0368a8;
 }
 
 /* Close Button */
 .usrmgmtclose {
-    font-size: 20px;
-    cursor: pointer;
+	font-size: 20px;
+	cursor: pointer;
 }
 
 
 /* Fade-in Animation */
 @keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.9); }
-    to { opacity: 1; transform: scale(1); }
+	from { opacity: 0; transform: scale(0.9); }
+	to { opacity: 1; transform: scale(1); }
 }
 
 
+/**GP List Table*/
+#viewGPTable{
+	border-collapse: collapse;
+	width:100%;
+}
+#viewGPTable thead tr th{
+	padding:10px;
+	background-color: #0368a8;
+	color: white;
+}
+#viewGPTable td,th{
+	border: 1px solid gray;
+	text-align: center;
+}
+#viewGPTable td{
+	padding: 5px;
+}
+#viewGPTable tr:nth-child(even){
+	background-color: rgba(188, 188, 188, 0.571);
+}
+#viewGPTable tr i:hover{
+	cursor: pointer;
+	color:#0368a8;
+}
+#gpDetailPagination i{
+	cursor: pointer;
+}
+/**GP List Table*/
+
+.btns button{
+    margin-top: 10px;
+	font-size: 0.8rem !important;
+	padding:5px;
+	background-color: white;
+	color: #0368a8;
+	border: none;
+	cursor: pointer;
+}
+.btns button:hover{
+	color: #01416a;
+}
+
+
+#changepassword-container{
+    height:100vh;
+    width:0px;
+    position: absolute;
+    right:0;
+    top:0;
+    background-color: white;
+    display: none;
+}
+.changepasswordHeading{
+    padding:15px;
+    background-color: #0368a8;
+    color:white;
+}
+.changepasswordContent{
+    padding: 10px;
+}
+#chnagePasswordClosebtn{
+    float: right;
+    cursor: pointer;
+    font-size: 1rem;
+}
